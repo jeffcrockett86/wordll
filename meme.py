@@ -59,7 +59,7 @@ class T:
         self.name = ''
         self.G = []
 
-class E:
+class G:
     def __init__(self, parent):
         self.parent = parent
         self.name = ''
