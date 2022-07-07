@@ -40,14 +40,14 @@ answer = 'stack'
 def analyze(cell, answer, index, words=words):
     if cell.letter == answer[index]:
         # words = list(filter(lambda word: word[i] == answer[i] , words))
-        words = [word for word in words if word[i] == answer[i]]
+        words = [word for word in words if word[index] == answer[index]]
         # allowed.append(guess[i])
         cell.is_green = True
-        print(guess[i], 'is green')
+        print(cell.letter, 'is green')
         cell.letter = colored(cell.letter, 'green')
-    elif cell.letter in answer and cell.letter != answer[i]:
+    elif cell.letter in answer and cell.letter != answer[index]:
         # words = list(filter(lambda word: word[i] in answer and word[i] != answer[i] , words))
-        words = [word for word in words if cell.letter in word and word[i] != cell.letter]
+        words = [word for word in words if cell.letter in word and word[index] != cell.letter]
         print(cell.letter, 'is yellow')
         cell.is_yellow = True
         cell.letter = colored(cell.letter, 'yellow')
@@ -55,22 +55,29 @@ def analyze(cell, answer, index, words=words):
         # allowed.append(guess[i])
     elif cell.letter not in answer:
             # words = list(filter(lambda word: guess[i] not in word, words))
-            words = [word for word in words if guess[i] not in word]
-            cell.is_gray = True
-            cell.letter = colored(cell.letter, 'gray')
+            words = [word for word in words if cell.letter not in word]
+            cell.is_grey = True
+            cell.letter = colored(cell.letter, 'grey')
+    return cell
 
 
 #so far should put the first guess in the grid. colors haven't been added yet
 def play(words=words):
     word_length = 5
     guess_num = 0
-    grid = make_grid()
-    guess = input(f'Guess {guess_num  + 1}')
-    if valid(guess):
-        while guess_num < 6:
-            for i in range(word_length):
-                grid.rows[guess_num].cells[i].letter = guess[i]
-                analyze(grid.rows[guess_num].cells[i], i)
-            guess_num += 1
+    grid = Grid("Wordle")
+    guess = input(f'Guess {guess_num  + 1}\n\n')
+    grid.add_row(guess)
+    # if valid(guess):
+
+    #     for i in range(len(guess)):
+    #         grid.rows[guess_num].cells[i].letter = guess[i]
+    #         analyze(grid.rows[guess_num].cells[i], answer, i)
+
+    #         guess = input(f'Guess {i+2}\n\n')
+
+    # guess_num += 1
 
     return grid
+
+play()

@@ -6,4 +6,4 @@ class Cell:
         self.html = '<td> </td>'
         self.is_green = False
         self.is_yellow = False
-        self.is_gray = False
+        self.is_grey = False
