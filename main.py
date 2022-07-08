@@ -3,12 +3,13 @@ from Grid import Grid
 from Row import Row
 from Cell import Cell
 from termcolor import colored
+import random
 
 f = open('wordleAlpha.txt', 'r')
 words = f.read().split('\n')[:-1]
-# answer = words[random.randint(0, len(words))]
-answer = 'sever'
-# print('Answer is', answer, '\n\n')
+answer = words[random.randint(0, len(words))]
+
+
 
 
 def valid(guess):
@@ -70,10 +71,10 @@ def play(words=words):
         colored_letters = assign_colors(grid.rows[-1], answer)
         print(' '.join(colored_letters))
         if guess == answer:
-            print('You win!')
+            print('\n\nYou win!')
             return
         guess_num += 1
-    print(f'You lose! The answer was {answer}')
+    print(f'\n\nYou lose! The answer was {answer}')
 
     return grid
 
