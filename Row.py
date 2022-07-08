@@ -1,6 +1,4 @@
 class Row:
-    def __init__(self, word, parent):
+    def __init__(self, word):
         self.word = word
-        self.parent = parent
         self.cells = []
-        self.html = '<tr> </tr>'

@@ -7,7 +7,7 @@ class Grid:
         self.rows = []
 
     def add_row(self, word):
-        self.rows.append(Row(word, self))
+        self.rows.append(Row(word))
         self.rows[-1].cells = [Cell(letter) for letter in word]
 
     @property
